@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FormularioCabecalho } from './components/FormularioCabecalho';
 import { PaginaImagens } from './components/PaginaImagens';
 import type { OrdemServico, ItemOrdem } from './types/index';
