@@ -2,11 +2,14 @@
  * Tipos TypeScript para o sistema de Ordem de Serviço.
  */
 
-export enum TipoCrop {
-  ESQUERDA = 'ESQUERDA',
-  DIREITA = 'DIREITA',
-  COMPLETO = 'COMPLETO'
-}
+export const TipoCrop = {
+  ESQUERDA: 'ESQUERDA',
+  DIREITA: 'DIREITA',
+  COMPLETO: 'COMPLETO'
+} as const;
+
+export type TipoCrop = typeof TipoCrop[keyof typeof TipoCrop];
+
 
 export interface ItemOrdem {
   id?: number;
