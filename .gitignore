@@ -1,0 +1,45 @@
+# Backend (Maven + Spring Boot)
+ordem-servico-backend/target/
+ordem-servico-backend/.mvn/
+ordem-servico-backend/mvnw
+ordem-servico-backend/mvnw.cmd
+ordem-servico-backend/src/main/resources/uploads/*
+!ordem-servico-backend/src/main/resources/uploads/.gitkeep
+
+# Frontend (Node + React)
+ordem-servico-frontend/node_modules/
+ordem-servico-frontend/dist/
+ordem-servico-frontend/.vite/
+ordem-servico-frontend/pnpm-lock.yaml
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Database
+*.db
+*.sqlite
+
+# OS
+Thumbs.db
+.DS_Store
