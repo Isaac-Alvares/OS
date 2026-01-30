@@ -28,15 +28,14 @@ export const LinhaImagem: React.FC<Props> = ({ item, numeroLinha, onChange }) =>
         // Upload da imagem
         const response = await imagemService.upload(file);
 
-        // Extrair nome e pasta do arquivo original
+        // Extrair apenas o nome do arquivo (sem o prefixo ./)
         const nomeArquivo = file.name;
-        const caminhoCompleto = (file as any).path || file.name;
 
         // Atualizar item
         onChange({
           ...item,
           ref: nomeArquivo,
-          pasta: caminhoCompleto,
+          pasta: nomeArquivo, // CORREÇÃO: Usar apenas o nome, sem o "./
           caminhoImagem: response.caminhoImagem,
         });
       } catch (error) {
@@ -81,7 +80,7 @@ export const LinhaImagem: React.FC<Props> = ({ item, numeroLinha, onChange }) =>
 
           {item.caminhoImagem ? (
             <img
-              src={`${API_URL}/api/imagens/uploads/${item.caminhoImagem}`}
+              src={`${API_URL}/uploads/${item.caminhoImagem}`}
               alt={`Imagem ${numeroLinha + 1}`}
               className="max-h-24 w-auto object-contain mx-auto"
             />
