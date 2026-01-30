@@ -82,7 +82,7 @@ export const LinhaImagem: React.FC<Props> = ({ item, numeroLinha, onChange }) =>
             <img
               src={`${API_URL}/uploads/${item.caminhoImagem}`}
               alt={`Imagem ${numeroLinha + 1}`}
-              className="max-h-24 w-auto object-contain mx-auto"
+              className="max-h-20 max-w-full object-contain mx-auto"
             />
           ) : (
             <div className="text-center text-gray-500 text-sm px-4">
