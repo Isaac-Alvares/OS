@@ -215,7 +215,7 @@ function App() {
       {/* Footer */}
       <footer className="bg-gray-800 text-white mt-12">
         <div className="container mx-auto px-4 py-4 text-center text-sm">
-          <p>Sistema de Ordem de Serviço 0.1</p>
+          <p>Sistema de Ordem de Serviço v0.1</p>
           <p className="text-gray-400 mt-1">
             Talking Box
           </p>
