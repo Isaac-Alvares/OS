@@ -26,7 +26,7 @@ public class CorsConfig {
             "http://localhost:5173",  // Vite default port
             "http://localhost:3000",  // React alternative port
             "http://127.0.0.1:5173"
-            "front-production-fe91.up.railway.app"
+            "https://front-production-fe91.up.railway.app"
         ));
         
         // Cabeçalhos permitidos
