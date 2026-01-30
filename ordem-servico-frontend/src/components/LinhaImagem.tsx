@@ -4,6 +4,9 @@ import type { ItemOrdem } from '../types/index';
 import { TipoCrop } from '../types/index';
 import { imagemService } from '../services/imagemService';
 
+// URL base da API (a mesma do api.ts)
+const API_URL = 'https://back-production-18e4.up.railway.app';
+
 interface Props {
   item: ItemOrdem;
   numeroLinha: number;
@@ -20,15 +23,15 @@ export const LinhaImagem: React.FC<Props> = ({ item, numeroLinha, onChange }) =>
       if (acceptedFiles.length === 0) return;
 
       const file = acceptedFiles[0];
-      
+
       try {
         // Upload da imagem
         const response = await imagemService.upload(file);
-        
+
         // Extrair nome e pasta do arquivo original
         const nomeArquivo = file.name;
         const caminhoCompleto = (file as any).path || file.name;
-        
+
         // Atualizar item
         onChange({
           ...item,
@@ -75,11 +78,12 @@ export const LinhaImagem: React.FC<Props> = ({ item, numeroLinha, onChange }) =>
           }`}
         >
           <input {...getInputProps()} />
+
           {item.caminhoImagem ? (
             <img
-              src={imagemService.getImagemUrl(item.caminhoImagem)}
+              src={`${API_URL}/api/imagens/uploads/${item.caminhoImagem}`}
               alt={`Imagem ${numeroLinha + 1}`}
-              className="max-w-full max-h-full object-contain"
+              className="max-h-24 w-auto object-contain mx-auto"
             />
           ) : (
             <div className="text-center text-gray-500 text-sm px-4">
@@ -99,7 +103,9 @@ export const LinhaImagem: React.FC<Props> = ({ item, numeroLinha, onChange }) =>
         {/* Campos de Informação */}
         <div className="flex-1 space-y-3">
           <div className="flex items-center gap-2">
-            <label className="text-sm font-medium text-gray-700 w-16">REF:</label>
+            <label className="text-sm font-medium text-gray-700 w-16">
+              REF:
+            </label>
             <input
               type="text"
               value={item.ref || ''}
@@ -110,7 +116,9 @@ export const LinhaImagem: React.FC<Props> = ({ item, numeroLinha, onChange }) =>
           </div>
 
           <div className="flex items-center gap-2">
-            <label className="text-sm font-medium text-gray-700 w-16">PASTA:</label>
+            <label className="text-sm font-medium text-gray-700 w-16">
+              PASTA:
+            </label>
             <input
               type="text"
               value={item.pasta || ''}
@@ -123,7 +131,10 @@ export const LinhaImagem: React.FC<Props> = ({ item, numeroLinha, onChange }) =>
           <div className="flex items-center gap-4">
             {/* Botões de Crop */}
             <div className="flex items-center gap-2">
-              <label className="text-sm font-medium text-gray-700">Crop:</label>
+              <label className="text-sm font-medium text-gray-700">
+                Crop:
+              </label>
+
               <button
                 type="button"
                 onClick={() => handleCropChange(TipoCrop.ESQUERDA)}
@@ -136,6 +147,7 @@ export const LinhaImagem: React.FC<Props> = ({ item, numeroLinha, onChange }) =>
               >
                 ⬅
               </button>
+
               <button
                 type="button"
                 onClick={() => handleCropChange(TipoCrop.COMPLETO)}
@@ -148,6 +160,7 @@ export const LinhaImagem: React.FC<Props> = ({ item, numeroLinha, onChange }) =>
               >
                 ⬌
               </button>
+
               <button
                 type="button"
                 onClick={() => handleCropChange(TipoCrop.DIREITA)}
@@ -164,11 +177,15 @@ export const LinhaImagem: React.FC<Props> = ({ item, numeroLinha, onChange }) =>
 
             {/* Campo MTS */}
             <div className="flex items-center gap-2">
-              <label className="text-sm font-medium text-gray-700">MTS:</label>
+              <label className="text-sm font-medium text-gray-700">
+                MTS:
+              </label>
               <input
                 type="text"
                 value={item.metragem || ''}
-                onChange={(e) => handleInputChange('metragem', e.target.value)}
+                onChange={(e) =>
+                  handleInputChange('metragem', e.target.value)
+                }
                 className="w-20 px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
                 placeholder="0.00"
               />
