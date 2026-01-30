@@ -4,7 +4,7 @@ import axios from 'axios';
  * Instância configurada do Axios para comunicação com o backend.
  */
 const api = axios.create({
-  baseURL: 'front-production-fe91.up.railway.app',
+  baseURL: 'back-production-18e4.up.railway.app',
   headers: {
     'Content-Type': 'application/json',
   },
